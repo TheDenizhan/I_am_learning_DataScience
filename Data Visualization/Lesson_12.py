@@ -1,0 +1,15 @@
+#ISI HARİTASI(HEATMAP)
+import matplotlib.pyplot as plt
+import seaborn as sns
+flight = sns.load_dataset("flights")
+df=flight.copy()
+print("ilk 5",df.head())
+print("shape",df.shape)
+print("yolcu açıklama",df["passengers"].describe())
+df = df.pivot(index="month", columns="year", values="passengers")
+sns.heatmap(df)
+plt.show()
+sns.heatmap(df,annot=True,fmt="d")
+plt.show()
+sns.heatmap(df,annot=True,fmt="d",linewidths=.8)
+plt.show()
